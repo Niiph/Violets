@@ -14,7 +14,10 @@ class PlantsController extends Controller
      */
     public function index()
     {
-        //
+        $plants = Plant::all();
+        return view('plant.index', [
+            'plants' => $plants
+        ]);
     }
 
     /**
@@ -47,7 +50,8 @@ class PlantsController extends Controller
     public function show($id)
     {
         $plants = Plant::find($id);
-        return view('plant.show')->with('plants', $plants);
+        return view('plant.show')
+            ->with('plants', $plants);
     }
 
     /**

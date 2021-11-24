@@ -15,7 +15,6 @@ class BreedersController extends Controller
     public function index()
     {
         $breeders = Breeder::all();
-        //dd($breeders);
         return view('breeder.index', [
             'breeders' => $breeders
         ]);
@@ -51,7 +50,8 @@ class BreedersController extends Controller
     public function show($id)
     {
         $breeder = Breeder::find($id);
-        return view('breeder.show')->with('breeder', $breeder);
+        return view('breeder.show')
+            ->with('breeder', $breeder);
     }
 
     /**

@@ -21,10 +21,13 @@
                         {{ __('Main page') }}
                     </x-nav-link>
                     <x-nav-link :href="route('breeder.index')" :active="request()->routeIs('breeder.index')">
-                        {{ __('Breeder') }}
+                        {{ __('Breeders') }}
                     </x-nav-link>
                     <x-nav-link :href="route('group.index')" :active="request()->routeIs('group.index')">
-                        {{ __('Group') }}
+                        {{ __('Groups') }}
+                    </x-nav-link>
+                    <x-nav-link :href="route('plant.index')" :active="request()->routeIs('plant.index')">
+                        {{ __('Plants') }}
                     </x-nav-link>
 
                 </div>
@@ -77,10 +80,13 @@
                 {{ __('Main page') }}
             </x-responsive-nav-link>
             <x-responsive-nav-link :href="route('breeder.index')" :active="request()->routeIs('breeder.index')">
-                {{ __('Breeder') }}
+                {{ __('Breeders') }}
             </x-responsive-nav-link>
             <x-responsive-nav-link :href="route('group.index')" :active="request()->routeIs('group.index')">
-                {{ __('Group') }}
+                {{ __('Groups') }}
+            </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('plant.index')" :active="request()->routeIs('plant.index')">
+                {{ __('Plants') }}
             </x-responsive-nav-link>
         </div>
 
