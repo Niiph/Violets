@@ -1,5 +1,5 @@
 <x-app-layout>
-    
+
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
             {{ __('Plants list') }}
@@ -11,14 +11,11 @@
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 bg-white border-b border-gray-200">
                     {{ __('All plants:') }}
-                    <div class="flex grid gap-2 grid-cols-1 sm:gap-4 md:grid-cols-2 lg:grid-cols-3 ">
+                    <div class="grid gap-2 grid-cols-1 sm:gap-4 md:grid-cols-2 lg:grid-cols-3 ">
                     @forelse ($plants as $plant)
-                        <div class="flex-1 text-center px-2 py-4 bg-white col-span-1 shadow-lg  rounded-2xl  sm:p-4">
-                            <a href="plant/{{ $plant['id'] }}"><img  src="images/{{ $plant['id'] }}.jpg" class="object-cover mb-4 w-96 h-80"></a>
-                            <a href="plant/{{ $plant['id'] }}" class="text-indigo-500 hover:text-indigo-900 font-semibold pt-2">{{ $plant['name'] }}</a>
-                        </div>
+                        @include('plant.tab')
                     @empty
-                        There are no plants added!
+                        {{ __('There are no plants added!') }}
                     @endforelse
                     </div>
                 </div>

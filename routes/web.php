@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BreedersController;
 use App\Http\Controllers\GroupsController;
 use App\Http\Controllers\PlantsController;
-
+use App\Http\Controllers\IndexController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -16,9 +16,11 @@ use App\Http\Controllers\PlantsController;
 |
 */
 
-Route::get('/', function() {
-    return view('index');
-})->name('index');
+// Route::get('/', function() {
+//     return view('index');
+// })->name('index');
+Route::resource('/', IndexController::class);
+
 Route::resource('/breeder', BreedersController::class);
 Route::resource('/group', GroupsController::class);
 Route::resource('/plant', PlantsController::class);

@@ -51,7 +51,8 @@ class GroupsController extends Controller
      */
     public function show($id)
     {
-        $group = Group::find($id)->plants;
+        $group = Group::find($id);
+        //->plants;
 //dd($group);
         return view('group.show')
             ->with('group', $group);
