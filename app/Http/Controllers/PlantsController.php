@@ -49,9 +49,9 @@ class PlantsController extends Controller
      */
     public function show($id)
     {
-        $plants = Plant::find($id);
+        $plant = Plant::find($id);
         return view('plant.show')
-            ->with('plants', $plants);
+            ->with('plant', $plant);
     }
 
     /**

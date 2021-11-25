@@ -9,16 +9,17 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 bg-white border-b border-gray-200">
-                    {{ __('.') }}
+                    {{ __('Plant:') }}
+                    <img  src="/images/{{ $plant['id'] }}.jpg" class="object-cover mb-4 h-80">
                     <ul>
                         <li class="font-bold">
-                            {{ $plants['name'] }} 
+                            {{ $plant['name'] }} 
                         </li>
                         <li class="italic">
-                            {{ $plants->breeder['name'] }}
+                            {{ $plant->breeder['name'] }}
                         </li>
                         <li class="text-sm font-bold text-gray-900">
-                            {{ $plants->group['name'] }}
+                            {{ $plant->group['name'] }}
                         </li>
                             
                     </ul>
