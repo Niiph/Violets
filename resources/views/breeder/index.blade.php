@@ -13,7 +13,7 @@
                     <div class="grid gap-2 grid-cols-1 sm:gap-4 md:grid-cols-2 lg:grid-cols-4 ">
                     @forelse ($breeders as $breeder)
                         <div class="flex-1 text-center px-2 py-4 bg-white col-span-1 shadow-lg  rounded-2xl  sm:p-4">
-                            <a href="breeder/{{ $breeder['id'] }}" class="text-indigo-500 hover:text-indigo-900 font-semibold pt-2">{{ $breeder['name'] }}</a>
+                            <a href="breeder/{{ $breeder->id }}" class="text-indigo-500 hover:text-indigo-900 font-semibold pt-2">{{ $breeder->name }}</a>
                         </div>
                     @empty
                         There are no plants added!

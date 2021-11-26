@@ -12,8 +12,8 @@
                     {{ __('Groups list:') }}
                     <div class="grid gap-2 grid-cols-1 sm:gap-4 md:grid-cols-2 lg:grid-cols-4 ">
                     @forelse ($groups  as $group)
-                        <div class="flex-1 text-center px-2 py-4 bg-white col-span-1 shadow-lg  rounded-2xl  sm:p-4">
-                            <a href="group/{{ $group['id'] }}" class="text-indigo-500 hover:text-indigo-900 font-semibold pt-2">{{ $group['name'] }}</a>
+                        <div class="flex-1 text-center px-2 py-4 bg-white col-span-1 shadow-lg  rounded-2xl  sm:p-4 capitalize">
+                            <a href="group/{{ $group->id }}" class="text-indigo-500 hover:text-indigo-900 font-semibold pt-2">{{ $group->name }}</a>
                         </div>
                     @empty
                         There are no plants added!

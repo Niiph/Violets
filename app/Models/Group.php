@@ -9,14 +9,11 @@ class Group extends Model
 {
     use HasFactory;
 
-    protected $table = 'groups';
-
-    protected $primaryKey = 'id';
-
     protected $fillable = ['name'];
 
     public function plants()
     {
         return $this->hasMany(Plant::class);
     }
+    
 }

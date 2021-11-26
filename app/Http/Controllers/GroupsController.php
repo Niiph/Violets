@@ -16,7 +16,7 @@ class GroupsController extends Controller
     public function index()
     {
         $groups = Group::all()->sortBy('name');
-        //dd($groups);
+   
         return view('/group.index', [
             'groups' => $groups
         ]);
@@ -52,8 +52,7 @@ class GroupsController extends Controller
     public function show($id)
     {
         $group = Group::find($id);
-        //->plants;
-//dd($group);
+
         return view('group.show')
             ->with('group', $group);
     }

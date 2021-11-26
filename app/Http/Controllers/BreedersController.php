@@ -50,6 +50,7 @@ class BreedersController extends Controller
     public function show($id)
     {
         $breeder = Breeder::find($id);
+        
         return view('breeder.show')
             ->with('breeder', $breeder);
     }

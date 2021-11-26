@@ -18,6 +18,9 @@
                         {{ __('There are no plants added!') }}
                     @endforelse
                     </div>
+                    <div class="pt-6">
+                        {{ $plants->links() }}
+                    </div>
                 </div>
             </div>
         </div>

@@ -9,10 +9,6 @@ class Plant extends Model
 {
     use HasFactory;
 
-    protected $table = 'plants';
-
-    protected $primaryKey = 'id';
-
     protected $fillable = ['name', 'original_name', 'description', 'breeder_id', 'group_id', 'image_path'];
 
     public function breeder()
