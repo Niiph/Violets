@@ -40,7 +40,11 @@ class GroupsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $group = Group::create([
+            'name' => $request->input('name')
+        ]);
+
+        return redirect('/group');
     }
 
     /**
@@ -65,7 +69,10 @@ class GroupsController extends Controller
      */
     public function edit($id)
     {
-        //
+        $group = Group::find($id);
+
+        return view('group.edit')
+            ->with('group', $group);
     }
 
     /**
@@ -77,7 +84,12 @@ class GroupsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $group = Group::where('id', $id)
+            ->update([
+                'name' => $request->input('name')
+        ]);
+
+        return redirect('/group');
     }
 
     /**
@@ -88,6 +100,10 @@ class GroupsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $group = Group::find($id);
+
+        $group->delete();
+
+        return redirect('/group');
     }
 }

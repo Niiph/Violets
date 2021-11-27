@@ -1,4 +1,100 @@
+<x-app-layout>
+    <x-slot name="header">
+        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+            {{ __('Edit plant') }}
+        </h2>
+    </x-slot>
 
-<svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 md:h-8 md:w-8 stroke-current text-red-400 inline-block" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 13h6m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-</svg>
+    <div class="py-12">
+        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
+                <div class="p-6 bg-white border-b border-gray-200">
+                    <div class="relative">
+                        <span>
+                            {{ __('Update plant data:') }}
+                        </span>
+                        
+                    </div>
+                    <div>
+                        <form action="/plant/{{ $plant->id }}" method="POST">
+                            @csrf
+                            @method('PUT')
+                            <div class="block pt-4">
+                                
+                                <label class="block">
+                                    <span class="text-gray-700">{{ __('Plant name') }}</span>
+                                    <input 
+                                    type="text"
+                                    class="mt-1 block w-80 rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+                                    name="name"
+                                    value="{{ $plant->name }}">
+                                </label>
+
+                                <label class="block">
+                                    <span class="text-gray-700">{{ __('Original name') }}</span>
+                                    <input 
+                                    type="text"
+                                    class="mt-1 block w-80 rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+                                    name="original_name"
+                                    value="{{ $plant->original_name }}">
+                                </label>
+
+                                <label class="block">
+                                    <span class="text-gray-700">{{ __('Description') }}</span>
+                                    <textarea 
+                                    class="mt-1 block w-80 rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+                                    rows="3"
+                                    name="description">{{ $plant->description }}</textarea>
+                                </label>
+
+                                <label class="block">
+                                    <span class="text-gray-700">{{ __('Breeder') }}</span>
+                                    <input 
+                                    type="text"
+                                    class="mt-1 block w-80 rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+                                    name="breeder_id"
+                                    value="{{ $plant->breeder_id }}">
+                                </label>
+
+                                <label class="block">
+                                    <span class="text-gray-700">{{ __('Group') }}</span>
+                                    <input 
+                                    type="text"
+                                    class="mt-1 block w-80 rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+                                    name="group_id"
+                                    value="{{ $plant->group_id }}">
+                                </label>
+
+                                <label class="block">
+                                    <span class="text-gray-700">{{ __('Image') }}</span>
+                                    <input 
+                                    type="text"
+                                    class="mt-1 block w-80 rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+                                    name="image_path"
+                                    value="{{ $plant->image_path }}">
+                                </label>
+
+                                <button class="w-20 mt-4 rounded-md shadow-sm border-2 border-opacity-75 border-indigo-300">
+                                    {{ __('Submit') }}
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                    <div>
+                        <form action="/plant/{{ $plant->id }}"
+                            method="POST">
+                            @csrf
+                            @method('DELETE')
+                            <button class="w-20 mt-6 rounded-md shadow-sm border-2 border-opacity-75 border-red-500">
+                                {{ __('Delete') }}
+                            </button>
+                        </form>
+                        
+                    </div>
+                   
+                </div>
+            </div>
+        </div>
+    </div>
+
+</x-app-layout>

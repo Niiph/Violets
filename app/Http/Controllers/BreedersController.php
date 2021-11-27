@@ -38,7 +38,13 @@ class BreedersController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $breeder = Breeder::create([
+            'name' => $request->input('name'),
+            'original_name' => $request->imput('original_name'),
+            'shortcut' => $request->input('shortcut')
+        ]);
+
+        return redirect('/breeder');
     }
 
     /**
@@ -63,7 +69,10 @@ class BreedersController extends Controller
      */
     public function edit($id)
     {
-        //
+        $breeder = Breeder::find($id);
+
+        return view('breeder.edit')
+            ->with('breeder', $breeder);
     }
 
     /**
@@ -75,7 +84,14 @@ class BreedersController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $breeder = Breeder::where('id', $id)
+        ->update([
+            'name' => $request->input('name'),
+            'original_name' => $request->input('original_name'),
+            'shortcut' => $request->input('shortcut')
+        ]);
+
+        return redirect('/breeder');
     }
 
     /**
@@ -86,6 +102,10 @@ class BreedersController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $breeder = Breeder::find($id);
+
+        $breeder->delete();
+
+        return redirect('/breeder');
     }
 }

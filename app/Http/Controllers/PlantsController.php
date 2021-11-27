@@ -27,7 +27,7 @@ class PlantsController extends Controller
      */
     public function create()
     {
-        //
+        return view('plant.create');
     }
 
     /**
@@ -38,7 +38,16 @@ class PlantsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $plant = Plant::create([
+            'name' => $request->input('name'),
+            'original_name' => $request->input('original_name'),
+            'description' => $request->input('description'),
+            'breeder_id' => $request->input('breeder_id'),
+            'group_id' => $request->input('group_id'),
+            'image_path' => $request->input('image_path')
+        ]);
+
+        return redirect('/plant');
     }
 
     /**
@@ -62,7 +71,10 @@ class PlantsController extends Controller
      */
     public function edit($id)
     {
-        //
+        $plant = Plant::find($id);
+
+        return view('plant.edit')
+            ->with('plant', $plant);
     }
 
     /**
@@ -74,7 +86,17 @@ class PlantsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $plant = Plant::where('id', $id)
+        ->update([
+            'name' => $request->input('name'),
+            'original_name' => $request->input('original_name'),
+            'description' => $request->input('description'),
+            'breeder_id' => $request->input('breeder_id'),
+            'group_id' => $request->input('group_id'),
+            'image_path' => $request->input('image_path')
+        ]);
+
+        return redirect('/plant/'.$id);
     }
 
     /**
@@ -85,6 +107,10 @@ class PlantsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $plant = Plant::find($id);
+
+        $plant->delete();
+
+        return redirect('/plant');
     }
 }
