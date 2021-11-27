@@ -1,6 +1,6 @@
 <div class="flex-1 text-center px-2 py-4 bg-white col-span-1 shadow-lg  rounded-2xl  sm:p-4">
     <a href="{{ url('plant/'. $plant->id)  }}">
-        <img  src="{{ url('images/'.$plant->id) }}.jpg" class="object-cover mb-2 w-96 h-80">
+        <img  src="{{ url('images/'.$plant->image_path) }}" class="object-cover mb-2 w-96 h-80">
         <p class="text-indigo-500 hover:text-indigo-900 font-semibold pt-2">
             {{ $plant->name }}
         </p>

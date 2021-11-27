@@ -13,7 +13,7 @@
                         <span>
                             {{ __('Update group data:') }}
                         </span>
-                        
+                        @include('layouts.errors')
                     </div>
                     <div>
                         <form action="/group/{{ $group->id }}" method="POST">
@@ -26,7 +26,8 @@
                                     type="text"
                                     class="mt-1 block w-80 rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
                                     name="name"
-                                    value="{{ $group->name }}">
+                                    value="{{ $group->name }}"
+                                    required>
                                 </label>
                                 <button class="w-20 mt-4 rounded-md shadow-sm border-2 border-opacity-75 border-indigo-300">
                                     {{ __('Submit') }}

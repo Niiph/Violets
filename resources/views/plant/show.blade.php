@@ -10,7 +10,7 @@
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 bg-white border-b border-gray-200">
                     {{ __('Plant:') }}
-                    <a href="/images/{{ $plant->id }}.jpg" data-lightbox="photos"><img  src="/images/{{ $plant->id }}.jpg" class="object-cover mb-4 h-96"></a>
+                    <a href="/images/{{ $plant->image_path }}" data-lightbox="photos"><img  src="/images/{{ $plant->id }}.jpg" class="object-cover mb-4 h-96"></a>
                     <ul>
                         <li class="font-bold">
                             {{ $plant->name }} 

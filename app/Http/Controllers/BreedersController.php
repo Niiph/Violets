@@ -14,7 +14,8 @@ class BreedersController extends Controller
      */
     public function index()
     {
-        $breeders = Breeder::all();
+        $breeders = Breeder::all()->sortBy('name');
+
         return view('breeder.index', [
             'breeders' => $breeders
         ]);
@@ -38,9 +39,13 @@ class BreedersController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'name' => 'required|unique:breeders'
+        ]);
+
         $breeder = Breeder::create([
             'name' => $request->input('name'),
-            'original_name' => $request->imput('original_name'),
+            'original_name' => $request->input('original_name'),
             'shortcut' => $request->input('shortcut')
         ]);
 
@@ -84,6 +89,10 @@ class BreedersController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $request->validate([
+            'name' => 'required'
+        ]);
+
         $breeder = Breeder::where('id', $id)
         ->update([
             'name' => $request->input('name'),

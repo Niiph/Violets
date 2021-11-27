@@ -40,6 +40,10 @@ class GroupsController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'name' => 'required|unique:groups'
+        ]);
+
         $group = Group::create([
             'name' => $request->input('name')
         ]);
@@ -84,6 +88,10 @@ class GroupsController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $request->validate([
+            'name' => 'required'
+        ]);
+
         $group = Group::where('id', $id)
             ->update([
                 'name' => $request->input('name')

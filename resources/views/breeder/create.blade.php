@@ -13,7 +13,7 @@
                         <span>
                             {{ __('Insert new breeder data:') }}
                         </span>
-                        
+                        @include('layouts.errors')
                     </div>
                     <div>
                         <form action="/breeder" method="POST">
@@ -26,7 +26,8 @@
                                     type="text"
                                     class="mt-1 block w-80 rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
                                     name="name"
-                                    placeholder="Enter name/transliteration if non latin">
+                                    placeholder="Enter name/transliteration if non latin"
+                                    required>
                                 </label>
 
                                 <label class="block">

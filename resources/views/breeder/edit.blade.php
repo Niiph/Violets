@@ -13,7 +13,7 @@
                         <span>
                             {{ __('Update breeder data:') }}
                         </span>
-                        
+                        @include('layouts.errors')
                     </div>
                     <div>
                         <form action="/breeder/{{ $breeder->id }}" method="POST">
@@ -27,7 +27,8 @@
                                     type="text"
                                     class="mt-1 block w-80 rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
                                     name="name"
-                                    value="{{ $breeder->name }}">
+                                    value="{{ $breeder->name }}"
+                                    required>
                                 </label>
 
                                 <label class="block">
@@ -46,7 +47,7 @@
                                     name="shortcut"
                                     value="{{ $breeder->shortcut }}">
                                 </label>
-
+                                
                                 <button class="w-20 mt-4 rounded-md shadow-sm border-2 border-opacity-75 border-indigo-300">
                                     {{ __('Submit') }}
                                 </button>
@@ -54,7 +55,7 @@
                         </form>
                     </div>
                     <div>
-                        <form action="/group/{{ $breeder->id }}"
+                        <form action="/breeder/{{ $breeder->id }}"
                             method="POST">
                             @csrf
                             @method('DELETE')

@@ -9,7 +9,7 @@ class Plant extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['name', 'original_name', 'description', 'breeder_id', 'group_id', 'image_path'];
+    protected $fillable = ['name', 'original_name', 'description', 'breeder_id', 'group_id', 'image'];
 
     public function breeder()
     {

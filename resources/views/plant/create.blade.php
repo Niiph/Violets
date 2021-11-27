@@ -13,7 +13,7 @@
                         <span>
                             {{ __('Insert new plant data:') }}
                         </span>
-                        
+                        @include('layouts.errors')
                     </div>
                     <div>
                         <form action="/plant" method="POST">
@@ -26,7 +26,8 @@
                                     type="text"
                                     class="mt-1 block w-80 rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
                                     name="name"
-                                    placeholder="Enter name/transliteration if non latin">
+                                    placeholder="Enter name/transliteration if non latin"
+                                    required>
                                 </label>
 
                                 <label class="block">
@@ -48,18 +49,30 @@
 
                                 <label class="block">
                                     <span class="text-gray-700">{{ __('Breeder') }}</span>
-                                    <input 
-                                    type="text"
-                                    class="mt-1 block w-80 rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
-                                    name="breeder_id">
+                                    <div>
+                                        <select class="js-example-basic-single mt-1 block w-80 rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+                                        name="breeder_id">
+                                            @forelse ($breeders as $breeder)
+                                                <option value="{{ $breeder->id }}">{{ $breeder->name }} {{ $breeder->original_name ?? ''}} {{ $breeder->shortcut ?? ''}}</option>
+                                            @empty
+                                                
+                                            @endforelse
+                                        </select>
+                                    </div>
                                 </label>
 
                                 <label class="block">
                                     <span class="text-gray-700">{{ __('Group') }}</span>
-                                    <input 
-                                    type="text"
-                                    class="mt-1 block w-80 rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
-                                    name="group_id">
+                                    <div>
+                                        <select class="js-example-basic-single mt-1 block w-80 rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+                                        name="group_id">
+                                            @forelse ($groups as $group)
+                                                <option value="{{ $group->id }}">{{ $group->name }}</option>
+                                            @empty
+                                                
+                                            @endforelse
+                                        </select>
+                                    </div>
                                 </label>
 
                                 <label class="block">

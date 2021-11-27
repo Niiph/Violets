@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Plant;
+use App\Models\Breeder;
+use App\Models\Group;
 
 class PlantsController extends Controller
 {
@@ -14,7 +16,7 @@ class PlantsController extends Controller
      */
     public function index()
     {
-        $plants = Plant::paginate(12);
+        $plants = Plant::orderBy('name')->paginate(12);
         return view('plant.index', [
             'plants' => $plants
         ]);
@@ -27,7 +29,14 @@ class PlantsController extends Controller
      */
     public function create()
     {
-        return view('plant.create');
+        $groups = Group::all()->sortBy('name');
+        $breeders = Breeder::all()->sortBy('name');
+
+        return view('plant.create', [
+            'breeders' => $breeders,
+            'groups' => $groups
+        ]);
+        //return view('plant.create');
     }
 
     /**
@@ -38,6 +47,10 @@ class PlantsController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'name' => 'required|unique:plants'
+        ]);
+
         $plant = Plant::create([
             'name' => $request->input('name'),
             'original_name' => $request->input('original_name'),
@@ -72,9 +85,14 @@ class PlantsController extends Controller
     public function edit($id)
     {
         $plant = Plant::find($id);
+        $groups = Group::all()->sortBy('name');
+        $breeders = Breeder::all()->sortBy('name');
 
-        return view('plant.edit')
-            ->with('plant', $plant);
+        return view('plant.edit', [
+            'plant' => $plant,
+            'breeders' => $breeders,
+            'groups' => $groups
+    ]);
     }
 
     /**
@@ -86,6 +104,18 @@ class PlantsController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $request->validate([
+            'name' => 'required',
+            'image' => 'mimes:jpg,png,jpeg|max:5120'
+        ]);
+
+        
+        $imageName = $id . '.' . $request->image->extension();
+        //dd($imageName);
+
+        $request->image->move(public_path('images'), $imageName);
+       
+
         $plant = Plant::where('id', $id)
         ->update([
             'name' => $request->input('name'),
@@ -93,7 +123,7 @@ class PlantsController extends Controller
             'description' => $request->input('description'),
             'breeder_id' => $request->input('breeder_id'),
             'group_id' => $request->input('group_id'),
-            'image_path' => $request->input('image_path')
+            'image_path' => $imageName
         ]);
 
         return redirect('/plant/'.$id);

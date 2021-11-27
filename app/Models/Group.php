@@ -13,7 +13,7 @@ class Group extends Model
 
     public function plants()
     {
-        return $this->hasMany(Plant::class);
+        return $this->hasMany(Plant::class)->orderBy('name');
     }
     
 }
