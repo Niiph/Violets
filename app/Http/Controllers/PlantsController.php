@@ -9,6 +9,12 @@ use App\Models\Group;
 
 class PlantsController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('auth', ['except' => ['index', 'show']]);
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -109,22 +115,29 @@ class PlantsController extends Controller
             'image' => 'mimes:jpg,png,jpeg|max:5120'
         ]);
 
-        
-        $imageName = $id . '.' . $request->image->extension();
-        //dd($imageName);
+        if (isset($request->image)) {
+            $imageName = $id . '.' . $request->image->extension();
+            $request->image->move(public_path('images'), $imageName);
 
-        $request->image->move(public_path('images'), $imageName);
-       
-
-        $plant = Plant::where('id', $id)
-        ->update([
-            'name' => $request->input('name'),
-            'original_name' => $request->input('original_name'),
-            'description' => $request->input('description'),
-            'breeder_id' => $request->input('breeder_id'),
-            'group_id' => $request->input('group_id'),
-            'image_path' => $imageName
-        ]);
+            $plant = Plant::where('id', $id)
+                ->update([
+                    'name' => $request->input('name'),
+                    'original_name' => $request->input('original_name'),
+                    'description' => $request->input('description'),
+                    'breeder_id' => $request->input('breeder_id'),
+                    'group_id' => $request->input('group_id'),
+                    'image_path' => $imageName
+                ]);
+        } else {
+            $plant = Plant::where('id', $id)
+                ->update([
+                    'name' => $request->input('name'),
+                    'original_name' => $request->input('original_name'),
+                    'description' => $request->input('description'),
+                    'breeder_id' => $request->input('breeder_id'),
+                    'group_id' => $request->input('group_id')
+                ]);
+            }
 
         return redirect('/plant/'.$id);
     }
