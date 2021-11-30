@@ -11,7 +11,7 @@
                 <div class="p-6 bg-white border-b border-gray-200">
                     <div class="relative">
                         <span>
-                            {{ __('Groups list:') }}
+                            {{ __('Groups list') }}:
                         </span>
                         @auth
                             <a href="{{ url('group/create') }}" >
