@@ -25,10 +25,8 @@
                     <x-nav-link :href="route('plant.index')" :active="request()->routeIs('plant.index')">
                         {{ __('Plants') }}
                     </x-nav-link>
-
                 </div>
             </div>
-
             
                 <!-- Settings Dropdown -->
                 <div class="hidden sm:flex sm:items-center sm:ml-6">
