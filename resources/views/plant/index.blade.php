@@ -12,7 +12,7 @@
                 <div class="p-6 bg-white border-b border-gray-200">
                     <div class="relative">
                         <span>
-                            {{ __('All plants:') }}
+                            {{ __('All plants') }}:
                         </span>
                         @auth
                             <a href="{{ url('plant/create') }}" >

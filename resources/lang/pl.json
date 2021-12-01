@@ -187,5 +187,18 @@
 
     "Hybridisers list" : "Lista hodowców",
     "Main page" : "Strona główna",
-    "Plants list" : "Lista roślin"
+    "Plants list" : "Lista roślin",
+    "All plants" : "Wszystkie rośliny",
+    "Breeders" : "Hodowcy",
+    "Breeder" : "Hodowca",
+    "Breeders list" : "Lista hodowców",
+    "Groups" : "Grupy",
+    "Group" : "Grupa",
+    "Groups list" : "Lista grup",
+    "Plants" : "Rośliny",
+    "Plant" : "Roślina",
+    "Plant details" : "Roślina",
+    "Random list" : "Losowa lista",
+    "There are no plants added!" : "Brak roslin na tej liście!",
+    "Unknown" : "Nieznane"
 }
