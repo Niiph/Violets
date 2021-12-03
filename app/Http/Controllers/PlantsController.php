@@ -57,13 +57,19 @@ class PlantsController extends Controller
             'name' => 'required|unique:plants'
         ]);
 
+        if (isset($request->chimera)) 
+            $chimera = 1;
+            else
+            $chimera = 0;
+
         $plant = Plant::create([
             'name' => $request->input('name'),
             'original_name' => $request->input('original_name'),
             'description' => $request->input('description'),
             'breeder_id' => $request->input('breeder_id'),
             'group_id' => $request->input('group_id'),
-            'image_path' => $request->input('image_path')
+            'image_path' => $request->input('image_path'),
+            'chimera' => $chimera
         ]);
 
         return redirect('/plant');
@@ -115,6 +121,11 @@ class PlantsController extends Controller
             'image' => 'mimes:jpg,png,jpeg|max:5120'
         ]);
 
+        if (isset($request->chimera)) 
+            $chimera = 1;
+            else
+            $chimera = 0;
+        
         if (isset($request->image)) {
             $imageName = $id . '.' . $request->image->extension();
             $request->image->move(public_path('images'), $imageName);
@@ -126,6 +137,7 @@ class PlantsController extends Controller
                     'description' => $request->input('description'),
                     'breeder_id' => $request->input('breeder_id'),
                     'group_id' => $request->input('group_id'),
+                    'chimera' => $chimera,
                     'image_path' => $imageName
                 ]);
         } else {
@@ -135,7 +147,8 @@ class PlantsController extends Controller
                     'original_name' => $request->input('original_name'),
                     'description' => $request->input('description'),
                     'breeder_id' => $request->input('breeder_id'),
-                    'group_id' => $request->input('group_id')
+                    'group_id' => $request->input('group_id'),
+                    'chimera' => $chimera
                 ]);
             }
 

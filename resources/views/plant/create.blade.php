@@ -75,13 +75,25 @@
                                     </div>
                                 </label>
 
-                                <label class="block">
-                                    <span class="text-gray-700">{{ __('Image') }}</span>
-                                    <input 
-                                    type="text"
-                                    class="mt-1 block w-80 rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
-                                    name="image_path">
-                                </label>
+                                <div class="block">
+                                    <div class="mt-2">
+                                        <div>
+                                            <label class="inline-flex items-center">
+                                                <input name="chimera" type="checkbox" class="
+                                                    rounded
+                                                    border-gray-300
+                                                    text-indigo-600
+                                                    shadow-sm
+                                                    focus:border-indigo-300
+                                                    focus:ring
+                                                    focus:ring-offset-0
+                                                    focus:ring-indigo-200
+                                                    focus:ring-opacity-50">
+                                                <span class="ml-2">Chimera</span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
 
                                 <button class="w-20 mt-4 rounded-md shadow-sm border-2 border-opacity-75 border-indigo-300">
                                     {{ __('Submit') }}

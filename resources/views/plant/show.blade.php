@@ -8,23 +8,22 @@
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="p-6 bg-white border-b border-gray-200">
-                    <p class="mb-2"></p>
-                    <a href="/images/{{ $plant->image_path }}" data-lightbox="photos"><img  src="/images/{{ $plant->image_path }}" class="object-cover mb-4 h-96"></a>
+                <div class="p-6 bg-white  ">
+                    <a href="/images/{{ $plant->image_path }}" data-lightbox="photos"><img class="float-left mb-4 mr-4 sm:h-96 object-cover" src="/images/{{ $plant->image_path }}" ></a>
                     <ul>
-                        <li class="font-bold">
-                            {{ $plant->name }} 
+                        <li class="font-bold text-xl">
+                            {{ $plant->name }} <span class="italic"> {{  $plant->original_name ?? '' }} </span>
                         </li>
-                        <li class="font-bold">
-                            {{ $plant->original_name ?? '' }} 
+                        <li class="text-lg">
+                            {{ __('Breeder') }}: <a class="hover:text-indigo-500" href="{{ url('breeder/'. $plant->breeder_id) }}" >{{ $plant->breeder->name ?? __('Unknown') }} <span class="italic"> {{ $plant->breeder->original_name ?? '' }} </span></a>
                         </li>
-                        <li class="italic">
-                            {{ __('Breeder') }}: {{ $plant->breeder->name ?? __('Unknown') }}
+                        <li class="text-base text-gray-900">
+                            {{ __('Group') }}: <a class="hover:text-indigo-500" href="{{ url('group/'. $plant->group_id) }}" >{{ $plant->group->name ?? __('Unknown') }}</a>
+                            @if ($plant->chimera == 1)
+                                 chimera                              
+                            @endif
                         </li>
-                        <li class="text-sm font-bold text-gray-900">
-                            {{ __('Group') }}: {{ $plant->group->name ?? __('Unknown') }}
-                        </li>
-                        <li class="text-sm font-bold text-gray-900">
+                        <li class="text-base text-gray-900 mt-4">
                             {{ $plant->description ?? '' }}
                         </li>
                     </ul>

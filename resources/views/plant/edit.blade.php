@@ -83,6 +83,29 @@
                                     </div>
                                 </label>
 
+                                <div class="block">
+                                    <div class="mt-2">
+                                        <div>
+                                            <label class="inline-flex items-center">
+                                                <input name="chimera" type="checkbox" class="
+                                                    rounded
+                                                    border-gray-300
+                                                    text-indigo-600
+                                                    shadow-sm
+                                                    focus:border-indigo-300
+                                                    focus:ring
+                                                    focus:ring-offset-0
+                                                    focus:ring-indigo-200
+                                                    focus:ring-opacity-50 "
+                                                    @if($plant->chimera == 1) 
+                                                        checked=""
+                                                    @endif>
+                                                <span class="ml-2">Chimera</span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+
                                 <label class="block">
                                     <span class="text-gray-700">{{ __('Image') }}</span>
                                     <input 
