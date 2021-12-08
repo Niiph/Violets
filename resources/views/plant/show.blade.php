@@ -22,6 +22,11 @@
                             @if ($plant->chimera == 1)
                                  chimera                              
                             @endif
+                           
+                            @foreach ($plant->pictures as $picture)
+                            {{ $picture->name }}
+                                
+                            @endforeach
                         </li>
                         <li class="text-base text-gray-900 mt-4">
                             {{ $plant->description ?? '' }}
