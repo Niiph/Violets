@@ -66,7 +66,7 @@ class BreedersController extends Controller
      */
     public function show($id)
     {
-        $breeder = Breeder::find($id);
+        $breeder = Breeder::findOrFail($id);
         
         return view('breeder.show')
             ->with('breeder', $breeder);

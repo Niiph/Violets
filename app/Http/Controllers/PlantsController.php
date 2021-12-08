@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Plant;
 use App\Models\Breeder;
 use App\Models\Group;
+use App\Models\Picture;
 
 class PlantsController extends Controller
 {
@@ -83,7 +84,7 @@ class PlantsController extends Controller
      */
     public function show($id)
     {
-        $plant = Plant::find($id);
+        $plant = Plant::findOrFail($id);
         return view('plant.show')
             ->with('plant', $plant);
     }

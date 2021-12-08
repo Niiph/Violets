@@ -65,7 +65,7 @@ class GroupsController extends Controller
      */
     public function show($id)
     {
-        $group = Group::find($id);
+        $group = Group::findOrFail($id);
 
         return view('group.show')
             ->with('group', $group);

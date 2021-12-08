@@ -20,4 +20,9 @@ class Plant extends Model
     {
         return $this->belongsTo(Group::class);
     }
+
+    public function pictures()
+    {
+        return $this->hasMany(Picture::class)->orderBy('name');
+    }
 }
